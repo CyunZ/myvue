@@ -15,17 +15,19 @@
 
 <script setup>
 import { onMounted } from 'vue';
+import { ref } from 'vue';
+import axios from 'axios';
 
-const houZhenList = [
-    {name:'陈某1',time:'2025-09-19 15:45:01',genber:'男',age:'18'},
-    {name:'陈某2',time:'2025-09-19 15:45:01',genber:'男',age:'18'},
-    {name:'陈某3',time:'2025-09-19 15:45:01',genber:'男',age:'18'},
-    {name:'陈某4',time:'2025-09-19 15:45:01',genber:'男',age:'18'},
-    {name:'陈某5',time:'2025-09-19 15:45:01',genber:'男',age:'18'},
-    {name:'陈某6',time:'2025-09-19 15:45:01',genber:'男',age:'18'},
-    {name:'陈某',time:'2025-09-19 15:45:01',genber:'男',age:'18'},
-    {name:'陈某',time:'2025-09-19 15:45:01',genber:'男',age:'18'},
-]
+const houZhenList = ref([])
+
+function getHouZhenList(){
+       axios.get('/clinic/getHouZhenList').then(response =>{
+        let result = response.data;
+        if(result.code === 0){
+            houZhenList.value = result.data;
+        }
+    })
+}
 
 const emit=defineEmits(['goToBreadcrumbItems'])
 
@@ -35,6 +37,7 @@ onMounted(()=>{
         {title:'医院信息系统',path:'/his'},
         {title:'门诊工作站'},
     ])
+    getHouZhenList();
 })
 
 import { ElNotification } from 'element-plus';
