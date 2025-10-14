@@ -11,7 +11,7 @@
         </div>
         <div style="margin-top:10px;">
             <el-button @click="login()" type="primary">登录</el-button>
-            <el-button type="success">注册</el-button>
+            <el-button @click="router.push('/signup')" type="success">注册</el-button>
         </div>
     </div>
 </template>

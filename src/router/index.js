@@ -8,6 +8,7 @@ import Inpatient from '@/views/HISViews/Inpatient.vue'
 import ShoppingView from '@/views/ShoppingViews/ShoppingView.vue'
 import ZeroShop from '@/views/ShoppingViews/ZeroShop.vue'
 import Subsidy from '@/views/ShoppingViews/Subsidy.vue'
+import SignUp from '@/views/SignUp.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -22,6 +23,7 @@ const router = createRouter({
     {path: '/shopping',name: 'shopping',component: ShoppingView,    },
     {path: '/shopping/zeroshop',name: 'zeroshop',component: ZeroShop,    },
     {path: '/shopping/subsidy',name: 'subsidy',component: Subsidy,    },
+    {path: '/signup',name: 'signup',component: SignUp,    },
   ],
 })
 
