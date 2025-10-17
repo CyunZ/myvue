@@ -31,7 +31,7 @@ const username = ref('')
 const password = ref('')
 
 function login(){
-    axios.post('http://127.0.0.1:12345/test/login',{
+    axios.post('/user/login',{
         uname:username.value,
         pwd:password.value
     }).then(response =>{
