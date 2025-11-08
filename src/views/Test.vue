@@ -17,6 +17,9 @@
     <el-col :span="8" style="text-align: center;margin-top: 10px;">
         <el-button @click="router.push('/shopping')"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 48 48"><defs><mask id="SVGIVU7Qcgm"><g fill="none"><path fill="#555555" d="M39 32H13L8 12h36z"/><path stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="M3 6h3.5L8 12m0 0l5 20h26l5-20z"/><circle cx="13" cy="39" r="3" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/><circle cx="39" cy="39" r="3" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/></g></mask></defs><path fill="currentColor" d="M0 0h48v48H0z" mask="url(#SVGIVU7Qcgm)"/></svg>购物平台</el-button>
     </el-col>
+    <el-col :span="8" style="text-align: center;margin-top: 10px;">
+        <el-button @click="router.push('/aichat')"><Icon icon="hugeicons:chat-bot" width="24" height="24" />AI聊天</el-button>
+    </el-col>
 </el-row>
 </template>
 
