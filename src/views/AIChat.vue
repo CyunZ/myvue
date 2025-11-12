@@ -28,8 +28,8 @@ const router = useRouter();
 const emit=defineEmits(['goToBreadcrumbItems'])
 const msg = ref('')
 const contentList = ref([
-    {'role':'assistant','thinkContent':'AI的思考内容','content':'你好，有什么可以帮你？'},
-    {'role':'user','content':'帮我查一下天气'}
+    // {'role':'assistant','thinkContent':'AI的思考内容','content':'你好，有什么可以帮你？'},
+    // {'role':'user','content':'帮我查一下天气'}
 ])
 const loading = ref(false)
 
@@ -38,8 +38,21 @@ onMounted(()=>{
         {title:'首页',path:'/test'},
         {title:'AI聊天'},
     ])
+    getChatContent();
 })
 
+function getChatContent(){
+    axios.get('/aichat/getChatContent').then(response =>{
+        let result = response.data;
+        if(result.code === 0){
+            contentList.value= result.data;
+            const scrollbar = scrollbarRef.value;
+            setTimeout(()=>{
+                scrollbar.setScrollTop(scrollbar.wrapRef.scrollHeight);
+            },0)
+        }
+    })
+}
 
 function chat(){
     if(msg.value === ''){
@@ -48,6 +61,10 @@ function chat(){
     }
     loading.value = true;
     contentList.value.push({'role':'user','content':msg.value});
+    const scrollbar = scrollbarRef.value;
+    setTimeout(()=>{
+        scrollbar.setScrollTop(scrollbar.wrapRef.scrollHeight);
+    },0)
     axios.post('/aichat/chat',{
         content:msg.value,
     }).then(response =>{
@@ -63,6 +80,7 @@ function chat(){
         }
         loading.value = false;
     })
+    msg.value = '';
 }
 
 </script>
